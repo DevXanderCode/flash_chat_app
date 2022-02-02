@@ -1,3 +1,4 @@
+import 'package:flash_chat_app/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,9 +12,11 @@ class FlashChat extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-          textTheme: const TextTheme(
-        bodyText1: TextStyle(color: Colors.black54),
-      )),
+        textTheme: const TextTheme(
+          bodyText1: TextStyle(color: Colors.black54),
+        ),
+      ),
+      home: ChatScreen(),
     );
   }
 }
