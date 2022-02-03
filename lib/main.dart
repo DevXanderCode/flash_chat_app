@@ -1,4 +1,5 @@
 import 'package:flash_chat_app/screens/chat_screen.dart';
+import 'package:flash_chat_app/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class FlashChat extends StatelessWidget {
           bodyText1: TextStyle(color: Colors.black54),
         ),
       ),
-      home: ChatScreen(),
+      home: LoginScreen(),
     );
   }
 }
