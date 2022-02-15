@@ -42,13 +42,14 @@ class _ChatScreenState extends State<ChatScreen> {
                     ),
                   ),
                   FlatButton(
-                      onPressed: () {
-                        //  implement send functionality
-                      },
-                      child: Text(
-                        'Send',
-                        style: kSendButtonTextStyle,
-                      ))
+                    onPressed: () {
+                      //  implement send functionality
+                    },
+                    child: Text(
+                      'Send',
+                      style: kSendButtonTextStyle,
+                    ),
+                  ),
                 ],
               ),
             )
