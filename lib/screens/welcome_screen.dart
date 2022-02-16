@@ -57,7 +57,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   ),
                 ),
                 AnimatedTextKit(
-                  repeatForever: true,
+                  // repeatForever: true,
                   pause: Duration(seconds: 2),
                   animatedTexts: [
                     TypewriterAnimatedText(
@@ -82,7 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
               onPressed: () => Navigator.pushNamed(context, LoginScreen.id),
             ),
             RoundedButton(
-              color: Colors?.blueAccent,
+              color: Colors.blueAccent,
               text: 'Register',
               onPressed: () =>
                   Navigator.pushNamed(context, RegistrationScreen.id),
