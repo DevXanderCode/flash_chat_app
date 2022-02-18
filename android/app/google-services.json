@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1081869608452",
+    "project_id": "flash-chat-9f02b",
+    "storage_bucket": "flash-chat-9f02b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081869608452:android:a7b201741ce07c3b1ff751",
+        "android_client_info": {
+          "package_name": "com.chinedualex.flash_chat_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081869608452-v8rm9dkved02feq1949hdgitvitufqt3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDaz25XjFV1M1IUj2NeBZLh5VjbMepSDmw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081869608452-v8rm9dkved02feq1949hdgitvitufqt3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
