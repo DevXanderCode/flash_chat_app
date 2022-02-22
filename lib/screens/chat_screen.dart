@@ -33,7 +33,7 @@ class _ChatScreenState extends State<ChatScreen> {
 
   void messageStream() async {
     await for (var snapshot in _firestore.collection('messages').snapshots()) {
-      snapshot.docs.forEach((message) => print(message.data()));
+      snapshot.docs.forEach((message) => print(message.data()['text']));
     }
   }
 
@@ -53,7 +53,7 @@ class _ChatScreenState extends State<ChatScreen> {
     super.initState();
     getCurrentUser();
     // getMessages();
-    messageStream();
+    // messageStream();
   }
 
   @override
@@ -79,6 +79,33 @@ class _ChatScreenState extends State<ChatScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
+            StreamBuilder<QuerySnapshot>(
+              stream: _firestore.collection('messages').snapshots(),
+              builder: (context, snapshots) {
+                if (snapshots.hasData) {
+                  final messages = snapshots.data?.docs;
+                  List<Text> messageWidgets = [];
+                  messages?.forEach((message) {
+                    Map<String, dynamic> data =
+                        message.data() as Map<String, dynamic>;
+
+                    final messageText = data['text'];
+                    final messageSender = data['sender'];
+
+                    final messageWidget =
+                        Text('$messageText from $messageSender');
+
+                    messageWidgets.add(messageWidget);
+                  });
+                  return Column(
+                    children: messageWidgets,
+                  );
+                }
+                return Column(
+                  children: [Text('No messages yet')],
+                );
+              },
+            ),
             Container(
               decoration: kMessageContainerDecoration,
               child: Row(
