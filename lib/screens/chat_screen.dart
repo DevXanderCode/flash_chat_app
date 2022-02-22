@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flash_chat_app/utilities/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -176,7 +177,11 @@ class MessageBubble extends StatelessWidget {
           ),
           Material(
             elevation: 5.0,
-            borderRadius: BorderRadius.circular(30.0),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.0),
+              bottomLeft: Radius.circular(30.0),
+              bottomRight: Radius.circular(30.0),
+            ),
             color: Colors.lightBlueAccent,
             child: Padding(
               padding: EdgeInsets.symmetric(
