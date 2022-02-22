@@ -13,12 +13,12 @@ class ChatScreen extends StatefulWidget {
 
 class _ChatScreenState extends State<ChatScreen> {
   final _auth = FirebaseAuth.instance;
-  final MessageTextController = TextEditingController();
+  final messageTextController = TextEditingController();
   late User loggedInUser;
   late String messageText;
 
   Future<void> sendMessage() async {
-    MessageTextController.clear();
+    messageTextController.clear();
     return _firestore
         .collection('messages')
         .add({
@@ -89,7 +89,7 @@ class _ChatScreenState extends State<ChatScreen> {
                 children: <Widget>[
                   Expanded(
                     child: TextField(
-                      controller: MessageTextController,
+                      controller: messageTextController,
                       onChanged: (value) {
                         messageText = value;
                       },
