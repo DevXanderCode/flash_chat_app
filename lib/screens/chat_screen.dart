@@ -26,6 +26,11 @@ class _ChatScreenState extends State<ChatScreen> {
         .catchError((error) => print('Failed sending message $error'));
   }
 
+  void getMessages() async {
+    final messages = await _firestore.collection('messages').get();
+    messages.docs.forEach((doc) => print(doc.data()));
+  }
+
   void getCurrentUser() async {
     try {
       final user = await _auth.currentUser;
@@ -41,6 +46,7 @@ class _ChatScreenState extends State<ChatScreen> {
   void initState() {
     super.initState();
     getCurrentUser();
+    getMessages();
   }
 
   @override
