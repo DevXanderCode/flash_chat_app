@@ -132,7 +132,7 @@ class MessagesStream extends StatelessWidget {
             ],
           );
         }
-        final messages = snapshots.data?.docs;
+        final messages = snapshots.data?.docs.reversed;
         List<MessageBubble> messageBubbles = [];
         messages?.forEach((message) {
           Map<String, dynamic> data = message.data() as Map<String, dynamic>;
@@ -152,6 +152,7 @@ class MessagesStream extends StatelessWidget {
         });
         return Expanded(
           child: ListView(
+            reverse: true,
             padding: EdgeInsets.symmetric(
               horizontal: 10.0,
               vertical: 20.0,
@@ -202,7 +203,7 @@ class MessageBubble extends StatelessWidget {
                 text,
                 style: TextStyle(
                   fontSize: 15.0,
-                  color: isMe ? Colors.white : Colors.black,
+                  color: isMe ? Colors.white : Colors.black54,
                 ),
               ),
             ),
