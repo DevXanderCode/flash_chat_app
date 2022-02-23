@@ -30,17 +30,6 @@ class _ChatScreenState extends State<ChatScreen> {
         .catchError((error) => print('Failed sending message $error'));
   }
 
-  void getMessages() async {
-    final messages = await _firestore.collection('messages').get();
-    messages.docs.forEach((doc) => print(doc.data()));
-  }
-
-  void messageStream() async {
-    await for (var snapshot in _firestore.collection('messages').snapshots()) {
-      snapshot.docs.forEach((message) => print(message.data()['text']));
-    }
-  }
-
   void getCurrentUser() async {
     try {
       final user = await _auth.currentUser;
@@ -123,6 +112,7 @@ class MessagesStream extends StatelessWidget {
         if (!snapshots.hasData) {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Center(
                 child: CircularProgressIndicator(
