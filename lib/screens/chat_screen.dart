@@ -25,6 +25,7 @@ class _ChatScreenState extends State<ChatScreen> {
         .add({
           'text': messageText,
           'sender': loggedInUser.email,
+          'date': DateTime.now()
         })
         .then((value) => print('message sent'))
         .catchError((error) => print('Failed sending message $error'));
@@ -107,7 +108,10 @@ class MessagesStream extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
-      stream: _firestore.collection('messages').snapshots(),
+      stream: _firestore
+          .collection("messages")
+          .orderBy('date', descending: true)
+          .snapshots(),
       builder: (context, snapshots) {
         if (!snapshots.hasData) {
           return Column(
@@ -122,7 +126,7 @@ class MessagesStream extends StatelessWidget {
             ],
           );
         }
-        final messages = snapshots.data?.docs.reversed;
+        final messages = snapshots.data?.docs;
         List<MessageBubble> messageBubbles = [];
         messages?.forEach((message) {
           Map<String, dynamic> data = message.data() as Map<String, dynamic>;
